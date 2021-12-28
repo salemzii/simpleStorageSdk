@@ -8,14 +8,12 @@ class Store4ME():
     username: str
     access_key: str
 
-    url = 'http://localhost:8000/api/'
     resquest = requests.Session()
 
 
     def set_auth_headers(self):
         headers = {'Authorization': 'token {}'.format(self.access_key)}
         return self.resquest.headers.update(headers)
-
 
 
     def open_file_image_path(self, path:str):
@@ -88,9 +86,3 @@ class Store4ME():
             return {'status_code': resp.status_code, 'value': resp.text}
         except Exception as err:
             return err   
-
-
-
-test = Store4ME('salem', 'd33736a5d40a3ba31a18e838c03f95519569b4bb')
-
-print(test.post_image('../dcmpADJ.png', 'dcmpadj'))
